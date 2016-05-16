@@ -1,19 +1,3 @@
-Integration Engineer Take Home Assignment
-
-Tingo.com is one of SmarterTravel’s internal brands where you can shop for and book a hotel.
-For the exercise, you will be writing JavaScript code to modify the behavior of the tingo.com
-listings page - this is the page you arrive on when doing a search for a destination with a check
-in and check out date from the home page. An example URL
-is http://www.tingo.com/hotels/San-Francisco- California-United-
-States/60713?searchDone=1&amp;a=2016-08- 09&amp;d=2016-08-
-11&amp;rooms=%5B%7B%22adults%22%3A2%2C%22numChildren%22%3A0%2C%22children%22%
-3A%5B%5D%7D%5D
-
-You should develop your solution by writing JavaScript code in your preferred editor, and then
-pasting it into your browser’s developer tools to execute it. 
-The solution you submit should be runnable by simply copying and pasting the entire block into
-the Chrome developer console and running it. 
-
 Task 1
 
 Write JavaScript code that fetches the destination name, check in date, and check out date of
