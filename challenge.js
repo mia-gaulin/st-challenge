@@ -18,7 +18,26 @@ vacation.push($(dateIn).val());
 vacation.push($(dateOut).val());
 
 // Task 2
-element.querySelector("h3").innerHTML = "Showing 1-20 out of 387 San Francisco Hotels";
+var hotels = document.getElementById("hotel_listings");
+var hotelItems = new Array;
+for (var i = 0; i < hotels.childNodes.length; i++) {
+  if (hotels.childNodes[i].nodeName == "LI") {
+    hotelItems.push(hotels.childNodes[i]);
+  }
+}
+
+var listing = document.getElementById("hotel_listing_container");
+
+listing.querySelector("h3").innerHTML = "Showing " + hotelItems.length + " out of 387 San Francisco Hotels";
+
+$(function(){
+  var $listing = $('.listing_summary').clone();
+  $('.bottom').append($listing);
+});
+
+// window.addEventListener('scroll', function () {
+//   $('.bottom').append($('.listing_summary'));
+// });
 
 // Task 3
 var button = document.getElementsByClassName("prominent_button do_show_rates");
