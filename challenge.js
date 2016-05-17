@@ -22,9 +22,6 @@ vacation.push($(dateOut).val());
 var city = document.getElementsByClassName("destination");
 var destination = city[1]
 
-// $(window).scroll(function() {
-//   if ($(window).data('ajaxready') == false) return;
-//   if ($(window).scrollTop() >= ($(document).height() - $(window).height()))
 var hotels = document.getElementById("hotel_listings");
 var hotelItems = new Array;
 
@@ -33,7 +30,6 @@ for (var i = 0; i < hotels.childNodes.length; i++) {
     hotelItems.push(hotels.childNodes[i]);
   }
 }
-// });
 
 var listing = document.getElementById("hotel_listing_container");
 
@@ -53,4 +49,9 @@ $(function(){
 // });
 
 // Task 3
-var button = document.getElementsByClassName("prominent_button do_show_rates");
+var buttons = document.querySelectorAll(".prominent_button.do_show_rates");
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", function() {
+    $(this).attr('target', '_blank');
+  });
+}
