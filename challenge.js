@@ -40,12 +40,16 @@ var getTotalHotelCount = function () {
   return searchArray[1];
 }
 
-var initialHotelCount = function (hotelCount, totalHotelCount) {
+var changeHotelString = function() {
   var hotelCountString = "Showing " + hotelCount + " out of " + totalHotelCount + " hotels in "
                          + $(destination).val();
   var listingContainerHeader = $('#hotel_listing_container h3');
 
   listingContainerHeader.text(hotelCountString);
+};
+
+var initialHotelCount = function (hotelCount, totalHotelCount) {
+  changeHotelString();
 
   var listingSummary = $('.listing_summary').clone();
   $('.bottom').append(listingSummary);
@@ -54,9 +58,7 @@ var initialHotelCount = function (hotelCount, totalHotelCount) {
 var updateHotelCount = function (hotelCount, totalHotelCount) {
   var hotelCountString = "Showing " + hotelCount + " out of " + totalHotelCount + " hotels in "
                          + $(destination).val();
-  var listingContainerHeader = $('#hotel_listing_container h3');
-
-  listingContainerHeader.text(hotelCountString);
+  changeHotelString();
 
   $('.bottom h3').text(hotelCountString);
 };
@@ -79,3 +81,5 @@ for (var i = 0; i < buttons.length; i++) {
     $(this).attr('target', '_blank');
   });
 }
+
+// a bit stuck on the last bit. can add a div with javascript, and use position: fixed to make it stay on the side and be viewable when scrolling. when a link is clicked, can open it in a new window and add the info (ID, or something else unique) to an array. populate the div of recently viewed hotels from that array. each time something is clicked, check against the array to make sure the ID isn't already present. if it isn't, push to array. if it is present, move that ID to be the first item and display first (most recent).
