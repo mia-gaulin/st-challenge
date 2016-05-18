@@ -2,9 +2,9 @@
 var city = document.getElementsByClassName("destination");
 var checkIn = document.getElementsByClassName("in_date_field");
 var checkOut = document.getElementsByClassName("out_date_field");
-var destination = city[1]
-var dateIn = checkIn[1]
-var dateOut = checkOut[1]
+var destination = city[1];
+var dateIn = checkIn[1];
+var dateOut = checkOut[1];
 
 // the following will return the value of each individually
 $(destination).val();
@@ -17,36 +17,60 @@ vacation.push($(destination).val());
 vacation.push($(dateIn).val());
 vacation.push($(dateOut).val());
 
+
 // Task 2
-// still working on getting the XX of 387 to change as the page loads more items
 var city = document.getElementsByClassName("destination");
-var destination = city[1]
+var destination = city[1];
 
-var hotels = document.getElementById("hotel_listings");
-var hotelItems = new Array;
+var getHotelItems = function () {
+  var hotels = document.getElementById("hotel_listings");
+  var hotelItems = new Array;
 
-for (var i = 0; i < hotels.childNodes.length; i++) {
-  if (hotels.childNodes[i].nodeName == "LI") {
-    hotelItems.push(hotels.childNodes[i]);
+  for (var i = 0; i < hotels.childNodes.length; i++) {
+    if (hotels.childNodes[i].nodeName == "LI") {
+      hotelItems.push(hotels.childNodes[i]);
+    }
   }
+  return hotelItems;
 }
 
-var listing = document.getElementById("hotel_listing_container");
+var getTotalHotelCount = function () {
+  var searchString = $('.listing_summary h3').text();
+  var searchArray = searchString.split(" ");
+  return searchArray[1];
+}
 
-// next step is to avoid hardcoding the 387
+var initialHotelCount = function (hotelCount, totalHotelCount) {
+  var hotelCountString = "Showing " + hotelCount + " out of " + totalHotelCount + " hotels in "
+                         + $(destination).val();
+  var listingContainerHeader = $('#hotel_listing_container h3');
 
-listing.querySelector("h3").innerHTML = "Showing " + hotelItems.length + " out of 387 hotels in " + $(destination).val();
+  listingContainerHeader.text(hotelCountString);
 
-$(function(){
-  var $listing = $('.listing_summary').clone();
-  $('.bottom').append($listing);
+  var listingSummary = $('.listing_summary').clone();
+  $('.bottom').append(listingSummary);
+};
+
+var updateHotelCount = function (hotelCount, totalHotelCount) {
+  var hotelCountString = "Showing " + hotelCount + " out of " + totalHotelCount + " hotels in "
+                         + $(destination).val();
+  var listingContainerHeader = $('#hotel_listing_container h3');
+
+  listingContainerHeader.text(hotelCountString);
+
+  $('.bottom h3').text(hotelCountString);
+};
+
+var hotelCount = getHotelItems().length;
+var totalHotelCount = getTotalHotelCount();
+
+initialHotelCount(hotelCount, totalHotelCount);
+
+$(window).scroll(function(){
+  hotelCount = getHotelItems().length;
+  updateHotelCount(hotelCount, totalHotelCount);
 });
 
-// this was my first method, but i like the clone better:
-
-// window.addEventListener('scroll', function () {
-//   $('.bottom').append($('.listing_summary'));
-// });
 
 // Task 3
 var buttons = document.querySelectorAll(".prominent_button.do_show_rates");
