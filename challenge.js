@@ -75,6 +75,9 @@ $(window).scroll(function(){
 
 
 // Task 3
+$("#content").prepend("<div id='selectedHotels' style='border:solid'>Recently Viewed Hotels</div>")
+var selectedHotels = new Array;
+
 var buttons = document.querySelectorAll(".prominent_button.do_show_rates");
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", function() {
@@ -82,4 +85,4 @@ for (var i = 0; i < buttons.length; i++) {
   });
 }
 
-// a bit stuck on the last bit. can add a div with javascript, and use position: fixed to make it stay on the side and be viewable when scrolling. when a link is clicked, can open it in a new window and add the info (ID, or something else unique) to an array. populate the div of recently viewed hotels from that array. each time something is clicked, check against the array to make sure the ID isn't already present. if it isn't, push to array. if it is present, move that ID to be the first item and display first (most recent).
+// a bit stuck on the last bit. when a link is clicked, can open it in a new window and add the info (ID, or something else unique) to an array. populate the div of recently viewed hotels from that array. each time something is clicked, check against the array to make sure the ID isn't already present. if it isn't, push to array. if it is present, move that ID to be the first item and display first (most recent).
